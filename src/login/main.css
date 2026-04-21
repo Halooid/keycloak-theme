@@ -568,3 +568,114 @@ body.kcBodyClass {
     border-inline-start: 2px solid var(--color-secondary-pink);
     padding-inline-start: 1rem;
 }
+
+/* Social Login Providers */
+#kc-social-providers {
+    margin-top: 2.5rem;
+    position: relative;
+    padding-top: 1rem;
+}
+
+#kc-social-providers h4 {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    white-space: nowrap;
+}
+
+#kc-social-providers h4::before,
+#kc-social-providers h4::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to var(--direction, right), transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+#kc-social-providers h4::after {
+    --direction: left;
+}
+
+.kcFormSocialAccountListClass {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.kcFormSocialAccountListButtonClass {
+    /* Hard-reset default styles */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    min-width: 0 !important;
+    width: 15rem !important; /* Standardized comfortable width */
+    max-width: 100% !important; /* Adaptive on small screens */
+    height: auto !important;
+    margin: 0 !important;
+    text-transform: none !important;
+    line-height: normal !important;
+    
+    /* New Styling */
+    border-radius: 100px !important;
+    padding: 0.6rem 1.4rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.6rem;
+    
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    font-family: var(--font-body) !important;
+    
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+}
+
+.kcFormSocialAccountListButtonClass:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-main) !important;
+}
+
+.kcFormSocialAccountListButtonClass i {
+    font-size: 1rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 1rem !important;
+    line-height: 0 !important;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.kcFormSocialAccountListButtonClass:hover i {
+    opacity: 1;
+}
+
+/* Minimal Specific Brand Hover States */
+#social-google.kcFormSocialAccountListButtonClass:hover { border-color: rgba(66, 133, 244, 0.4) !important; }
+#social-github.kcFormSocialAccountListButtonClass:hover { border-color: rgba(255, 255, 255, 0.4) !important; }
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .kcFormSocialAccountListClass {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

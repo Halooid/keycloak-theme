@@ -51,5 +51,6 @@ const classes = {
     kcInputGroup: "password-field-wrapper",
     kcFormPasswordVisibilityButtonClass: "password-toggle",
     kcInputHelperTextBeforeClass: "helper-text",
-    kcInputHelperTextAfterClass: "helper-text"
+    kcInputHelperTextAfterClass: "helper-text",
+    kcFormSocialAccountListButtonClass: ""
 } satisfies { [key in ClassKey]?: string };
