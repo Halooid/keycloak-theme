@@ -35,7 +35,7 @@ body.kcBodyClass {
 }
 
 .brand-section {
-  flex: 1.5;
+  flex: 50;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -88,7 +88,7 @@ body.kcBodyClass {
 }
 
 .form-section {
-  flex: 1;
+  flex: 50;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -280,6 +280,7 @@ body.kcBodyClass {
 
 #kc-info-wrapper {
     color: var(--text-muted);
+    background-color: transparent;
     font-size: 0.9rem;
 }
 
