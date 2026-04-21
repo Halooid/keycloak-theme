@@ -113,6 +113,56 @@ body.kcBodyClass {
     box-shadow: none !important;
 }
 
+/* Button Styles port from auth-web */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(14, 33, 160, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--gradient-hover);
+  box-shadow: 0 15px 30px -5px rgba(177, 83, 215, 0.5);
+  transform: scale(1.02);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .split-layout { flex-direction: column; }
@@ -121,6 +171,6 @@ body.kcBodyClass {
   .form-section { flex: 1; padding: 4rem 2rem; }
 }
 
-div.kcInfoWrapper {
+div.kcInfoAreaWrapper {
     background-color: transparent;
 }

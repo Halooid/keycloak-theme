@@ -39,4 +39,9 @@ export default function KcPage(props: { kcContext: KcContext }) {
     );
 }
 
-const classes = {} satisfies { [key in ClassKey]?: string };
+const classes = {
+    kcButtonClass: "btn",
+    kcButtonPrimaryClass: "btn-primary",
+    kcButtonBlockClass: "btn-block",
+    kcButtonLargeClass: "btn-lg"
+} satisfies { [key in ClassKey]?: string };
