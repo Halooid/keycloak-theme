@@ -1,47 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap');
 
 :root {
-  /* Color Palette */
   --color-primary-deep: #0E21A0;
   --color-primary-royal: #4D2FB2;
   --color-secondary-amethyst: #B153D7;
   --color-secondary-pink: #F375C2;
   
-  /* UI Colors */
   --bg-dark: #05060f;
   --text-main: #ffffff;
   --text-muted: #b0b0cc;
   
-  /* Gradients */
   --gradient-main: linear-gradient(135deg, var(--color-primary-deep) 0%, var(--color-primary-royal) 50%, var(--color-secondary-amethyst) 100%);
   --gradient-hover: linear-gradient(135deg, var(--color-primary-royal) 0%, var(--color-secondary-amethyst) 50%, var(--color-secondary-pink) 100%);
-  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  --color-danger: #ff4b4b;
-  --gradient-danger: linear-gradient(135deg, #ff4b4b 0%, #ff8080 100%);
   
-  /* Fonts */
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Montserrat', sans-serif;
-
-  font-family: var(--font-body);
-  line-height: 1.6;
-  font-weight: 400;
-
-  color-scheme: dark;
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+body.kcBodyClass {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
 }
 
 /* Split Layout */
@@ -100,6 +81,7 @@ body {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  color: white;
 }
 
 .form-section {
@@ -111,71 +93,6 @@ body {
   background: var(--bg-dark);
 }
 
-.minimal-form-wrapper {
-  width: 100%;
-  max-width: 380px;
-}
-
-.minimal-form-wrapper h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-  letter-spacing: -0.02em;
-}
-
-.input-group {
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.input-group label {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.input-field {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 1rem 1.2rem;
-  font-size: 1rem;
-  color: white;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  outline: none !important;
-}
-
-.input-field:focus {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--color-primary-royal);
-  box-shadow: 0 0 20px rgba(77, 47, 178, 0.2);
-}
-
-.btn-primary {
-  width: 100%;
-  padding: 1rem;
-  background: var(--gradient-main);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(177, 83, 215, 0.5);
-}
-
 .text-gradient {
   background: var(--gradient-hover);
   -webkit-background-clip: text;
@@ -183,6 +100,20 @@ body {
   background-clip: text;
 }
 
+/* Keycloak Overrides to match theme */
+.kcLoginClass {
+    background: transparent !important;
+}
+
+.kcFormCardClass {
+    width: 100%;
+    max-width: 380px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
   .split-layout { flex-direction: column; }
   .brand-section { height: 40vh; padding: 2rem; }
@@ -190,21 +121,6 @@ body {
   .form-section { flex: 1; padding: 4rem 2rem; }
 }
 
-/* Keycloak specific overrides */
-#kc-header {
-    display: none;
-}
-
-#kc-content {
-    padding: 0;
-}
-
-#kc-content-wrapper {
-    width: 100%;
-}
-
-.kc-login-form {
-    background: transparent;
-    border: none;
-    box-shadow: none;
+div.kcInfoWrapper {
+    background-color: transparent;
 }
