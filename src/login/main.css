@@ -84,7 +84,7 @@ body.kcBodyClass {
 }
 
 .brand-tagline {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -421,9 +421,16 @@ body.kcBodyClass {
 /* Responsive */
 @media (max-width: 1024px) {
   .split-layout { flex-direction: column; }
-  .brand-section { height: 40vh; padding: 2rem; }
-  .brand-tagline { font-size: 2rem; }
-  .form-section { flex: 1; padding: 4rem 2rem; }
+  .brand-section { 
+    min-height: 25vh; 
+    padding: 3rem 1.5rem 1.5rem; 
+  }
+  .brand-logo-large {
+    height: 50px;
+    margin-bottom: 1.5rem;
+  }
+  .brand-tagline { font-size: 1.1rem; }
+  .form-section { flex: 1; padding: 3rem 1.5rem; }
 }
 
 /* Language Dropdown */
