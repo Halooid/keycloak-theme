@@ -43,5 +43,9 @@ const classes = {
     kcButtonClass: "btn",
     kcButtonPrimaryClass: "btn-primary",
     kcButtonBlockClass: "btn-block",
-    kcButtonLargeClass: "btn-lg"
+    kcButtonLargeClass: "btn-lg",
+    kcInputClass: "input-field",
+    kcLabelClass: "input-label",
+    kcInputErrorMessageClass: "error-message",
+    kcFormGroupClass: "input-group"
 } satisfies { [key in ClassKey]?: string };

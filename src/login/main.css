@@ -15,6 +15,9 @@
   
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Montserrat', sans-serif;
+
+  --color-danger: #ff4b4b;
+  --gradient-danger: linear-gradient(135deg, #ff4b4b 0%, #ff8080 100%);
 }
 
 body.kcBodyClass {
@@ -111,6 +114,64 @@ body.kcBodyClass {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+/* Input Styles port from auth-web */
+.input-group {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    margin-left: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    display: block;
+}
+
+.input-field:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-secondary-amethyst);
+    box-shadow: 0 0 0 4px rgba(177, 83, 215, 0.15);
+}
+
+.input-field[aria-invalid="true"] {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 4px rgba(255, 75, 75, 0.1);
+}
+
+.error-message {
+    display: block;
+    color: var(--color-danger);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-left: 0.4rem;
+    animation: slide-in 0.3s ease;
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Button Styles port from auth-web */
