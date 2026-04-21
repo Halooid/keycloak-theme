@@ -175,6 +175,16 @@ body.kcBodyClass {
     backdrop-filter: blur(10px);
 }
 
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover, 
+.input-field:-webkit-autofill:focus,
+.input-field:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--text-main) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #0c0d18 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: var(--text-main) !important;
+}
+
 .form-row {
     display: flex;
     width: 100%;
