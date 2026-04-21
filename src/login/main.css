@@ -28,6 +28,10 @@ body.kcBodyClass {
     overflow-x: hidden;
 }
 
+.login-pf-page {
+    padding-top: 0px;
+}
+
 /* Split Layout */
 .split-layout {
   display: flex;
@@ -124,13 +128,30 @@ body.kcBodyClass {
 
 .input-label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-muted);
-    margin-bottom: 0.4rem;
-    margin-left: 0.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    margin-left: 0.2rem;
+    text-transform: capitalize;
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+}
+
+.kcLabelClass {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+    margin-left: 0.2rem;
+}
+
+.kcFormHeaderClass {
+    margin-bottom: 2rem;
 }
 
 .required-mark {
@@ -156,7 +177,6 @@ body.kcBodyClass {
 
 .form-row {
     display: flex;
-    gap: 1rem;
     width: 100%;
 }
 
@@ -211,9 +231,9 @@ body.kcBodyClass {
 .error-message {
     display: block;
     color: var(--color-danger);
-    font-size: 0.85rem;
+    font-size: 0.6rem;
     font-weight: 600;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     margin-left: 0.4rem;
     animation: slide-in 0.3s ease;
 }
