@@ -34,14 +34,79 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
 
     const groupNameRef = { current: "" };
 
-    return (
-        <>
-            {formFieldStates.map(({ attribute, displayableErrors, valueOrValues }) => {
-                return (
-                    <Fragment key={attribute.name}>
-                        <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} kcClsx={kcClsx} />
-                        {BeforeField !== undefined && (
-                            <BeforeField
+    const renderedNames = new Set<string>();
+
+    const renderField = (name: string) => {
+        const fieldState = formFieldStates.find(f => f.attribute.name === name);
+        if (!fieldState) return null;
+
+        renderedNames.add(name);
+
+        const { attribute, displayableErrors, valueOrValues } = fieldState;
+
+        return (
+            <Fragment key={attribute.name}>
+                <GroupLabel attribute={attribute} groupNameRef={groupNameRef} i18n={i18n} kcClsx={kcClsx} />
+                {BeforeField !== undefined && (
+                    <BeforeField
+                        attribute={attribute}
+                        dispatchFormAction={dispatchFormAction}
+                        displayableErrors={displayableErrors}
+                        valueOrValues={valueOrValues}
+                        kcClsx={kcClsx}
+                        i18n={i18n}
+                    />
+                )}
+                <div
+                    className={kcClsx("kcFormGroupClass")}
+                    style={{
+                        display:
+                            attribute.annotations.inputType === "hidden" ||
+                            (attribute.name === "password-confirm" && !doMakeUserConfirmPassword)
+                                ? "none"
+                                : undefined
+                    }}
+                >
+                    <div className={kcClsx("kcLabelWrapperClass")}>
+                        <label htmlFor={attribute.name} className={kcClsx("kcLabelClass")}>
+                            {advancedMsg(attribute.displayName ?? "")}
+                            {attribute.required && (
+                                <span className="required-mark" aria-hidden="true">
+                                    *
+                                </span>
+                            )}
+                        </label>
+                    </div>
+                    <div className={kcClsx("kcInputWrapperClass")}>
+                        {attribute.annotations.inputHelperTextBefore !== undefined && (
+                            <div
+                                className={kcClsx("kcInputHelperTextBeforeClass")}
+                                id={`form-help-text-before-${attribute.name}`}
+                                aria-live="polite"
+                            >
+                                {advancedMsg(attribute.annotations.inputHelperTextBefore)}
+                            </div>
+                        )}
+                        <InputFieldByType
+                            attribute={attribute}
+                            valueOrValues={valueOrValues}
+                            displayableErrors={displayableErrors}
+                            dispatchFormAction={dispatchFormAction}
+                            kcClsx={kcClsx}
+                            i18n={i18n}
+                        />
+                        <FieldErrors attribute={attribute} displayableErrors={displayableErrors} kcClsx={kcClsx} fieldIndex={undefined} />
+                        {attribute.annotations.inputHelperTextAfter !== undefined && (
+                            <div
+                                className={kcClsx("kcInputHelperTextAfterClass")}
+                                id={`form-help-text-after-${attribute.name}`}
+                                aria-live="polite"
+                            >
+                                {advancedMsg(attribute.annotations.inputHelperTextAfter)}
+                            </div>
+                        )}
+                        {AfterField !== undefined && (
+                            <AfterField
                                 attribute={attribute}
                                 dispatchFormAction={dispatchFormAction}
                                 displayableErrors={displayableErrors}
@@ -50,70 +115,25 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                                 i18n={i18n}
                             />
                         )}
-                        <div
-                            className={kcClsx("kcFormGroupClass")}
-                            style={{
-                                display:
-                                    attribute.annotations.inputType === "hidden" ||
-                                    (attribute.name === "password-confirm" && !doMakeUserConfirmPassword)
-                                        ? "none"
-                                        : undefined
-                            }}
-                        >
-                            <div className={kcClsx("kcLabelWrapperClass")}>
-                                <label htmlFor={attribute.name} className={kcClsx("kcLabelClass")}>
-                                    {advancedMsg(attribute.displayName ?? "")}
-                                    {attribute.required && (
-                                        <span className="required-mark" aria-hidden="true">
-                                            *
-                                        </span>
-                                    )}
-                                </label>
-                            </div>
-                            <div className={kcClsx("kcInputWrapperClass")}>
-                                {attribute.annotations.inputHelperTextBefore !== undefined && (
-                                    <div
-                                        className={kcClsx("kcInputHelperTextBeforeClass")}
-                                        id={`form-help-text-before-${attribute.name}`}
-                                        aria-live="polite"
-                                    >
-                                        {advancedMsg(attribute.annotations.inputHelperTextBefore)}
-                                    </div>
-                                )}
-                                <InputFieldByType
-                                    attribute={attribute}
-                                    valueOrValues={valueOrValues}
-                                    displayableErrors={displayableErrors}
-                                    dispatchFormAction={dispatchFormAction}
-                                    kcClsx={kcClsx}
-                                    i18n={i18n}
-                                />
-                                <FieldErrors attribute={attribute} displayableErrors={displayableErrors} kcClsx={kcClsx} fieldIndex={undefined} />
-                                {attribute.annotations.inputHelperTextAfter !== undefined && (
-                                    <div
-                                        className={kcClsx("kcInputHelperTextAfterClass")}
-                                        id={`form-help-text-after-${attribute.name}`}
-                                        aria-live="polite"
-                                    >
-                                        {advancedMsg(attribute.annotations.inputHelperTextAfter)}
-                                    </div>
-                                )}
-                                {AfterField !== undefined && (
-                                    <AfterField
-                                        attribute={attribute}
-                                        dispatchFormAction={dispatchFormAction}
-                                        displayableErrors={displayableErrors}
-                                        valueOrValues={valueOrValues}
-                                        kcClsx={kcClsx}
-                                        i18n={i18n}
-                                    />
-                                )}
-                                {/* NOTE: Downloading of html5DataAnnotations scripts is done in the useUserProfileForm hook */}
-                            </div>
-                        </div>
-                    </Fragment>
-                );
-            })}
+                    </div>
+                </div>
+            </Fragment>
+        );
+    };
+
+    return (
+        <>
+            <div className="form-row">
+                {renderField("firstName")}
+                {renderField("lastName")}
+            </div>
+            {renderField("username")}
+            {renderField("email")}
+            {renderField("password")}
+            {renderField("password-confirm")}
+            {formFieldStates
+                .filter(f => !renderedNames.has(f.attribute.name))
+                .map(f => renderField(f.attribute.name))}
         </>
     );
 }

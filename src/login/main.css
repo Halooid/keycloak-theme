@@ -110,7 +110,7 @@ body.kcBodyClass {
 
 .kcFormCardClass {
     width: 100%;
-    max-width: 380px !important;
+    padding: 0;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -151,6 +151,17 @@ body.kcBodyClass {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     display: block;
+    backdrop-filter: blur(10px);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-row .input-group {
+    flex: 1;
 }
 
 .input-field:focus {
