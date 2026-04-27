@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap');
 
+/* ==========================================================================
+   1. Variables & Root
+   ========================================================================== */
+
 :root {
   --color-primary-deep: #0E21A0;
   --color-primary-royal: #4D2FB2;
@@ -20,6 +24,10 @@
   --gradient-danger: linear-gradient(135deg, #ff4b4b 0%, #ff8080 100%);
 }
 
+/* ==========================================================================
+   2. Global Resets & Base
+   ========================================================================== */
+
 body.kcBodyClass {
     margin: 0;
     background-color: var(--bg-dark);
@@ -32,12 +40,23 @@ body.kcBodyClass {
     padding-top: 0px;
 }
 
-/* Split Layout */
+.text-gradient {
+  background: var(--gradient-hover);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==========================================================================
+   3. Layout Structure (Split View)
+   ========================================================================== */
+
 .split-layout {
   display: flex;
   min-height: 100vh;
 }
 
+/* Brand Section (Left) */
 .brand-section {
   flex: 50;
   position: relative;
@@ -66,12 +85,6 @@ body.kcBodyClass {
 .blob-2 { width: 600px; height: 600px; background: var(--color-secondary-amethyst); bottom: -150px; right: -100px; animation-duration: 25s; }
 .blob-3 { width: 400px; height: 400px; background: var(--color-primary-royal); top: 20%; left: 30%; animation-duration: 30s; }
 
-@keyframes blob-float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(50px, 100px) scale(1.1); }
-  100% { transform: translate(-50px, -50px) scale(0.9); }
-}
-
 .brand-content {
   position: relative;
   z-index: 10;
@@ -91,6 +104,7 @@ body.kcBodyClass {
   color: white;
 }
 
+/* Form Section (Right) */
 .form-section {
   flex: 50;
   position: relative;
@@ -101,14 +115,10 @@ body.kcBodyClass {
   background: var(--bg-dark);
 }
 
-.text-gradient {
-  background: var(--gradient-hover);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* ==========================================================================
+   4. Keycloak Core Overrides
+   ========================================================================== */
 
-/* Keycloak Overrides to match theme */
 .kcLoginClass {
     background: transparent !important;
 }
@@ -121,13 +131,30 @@ body.kcBodyClass {
     box-shadow: none !important;
 }
 
-/* Input Styles port from auth-web */
+.kcFormHeaderClass {
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   5. Form Components
+   ========================================================================== */
+
+/* Inputs & Labels */
 .input-group {
     margin-bottom: 1.25rem;
     width: 100%;
 }
 
-.input-label {
+.form-row {
+    display: flex;
+    width: 100%;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+.input-label, .kcLabelClass {
     display: block;
     font-size: 0.9rem;
     font-weight: 600;
@@ -140,19 +167,7 @@ body.kcBodyClass {
 }
 
 .kcLabelClass {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-muted);
     font-size: 0.8rem;
-    text-transform: capitalize;
-    font-family: var(--font-heading);
-    letter-spacing: 0.02em;
-    margin-left: 0.2rem;
-}
-
-.kcFormHeaderClass {
-    margin-bottom: 2rem;
 }
 
 .required-mark {
@@ -176,25 +191,6 @@ body.kcBodyClass {
     backdrop-filter: blur(10px);
 }
 
-.input-field:-webkit-autofill,
-.input-field:-webkit-autofill:hover, 
-.input-field:-webkit-autofill:focus,
-.input-field:-webkit-autofill:active {
-    -webkit-text-fill-color: var(--text-main) !important;
-    -webkit-box-shadow: 0 0 0px 1000px #0c0d18 inset !important;
-    transition: background-color 5000s ease-in-out 0s;
-    caret-color: var(--text-main) !important;
-}
-
-.form-row {
-    display: flex;
-    width: 100%;
-}
-
-.form-row .input-group {
-    flex: 1;
-}
-
 .input-field:focus {
     outline: none;
     background: rgba(255, 255, 255, 0.05);
@@ -207,6 +203,7 @@ body.kcBodyClass {
     box-shadow: 0 0 0 4px rgba(255, 75, 75, 0.1);
 }
 
+/* Password Toggle Specifics */
 .password-field-wrapper {
     position: relative;
     display: flex;
@@ -239,127 +236,7 @@ body.kcBodyClass {
     padding-right: 3rem;
 }
 
-.error-message {
-    display: block;
-    color: var(--color-danger);
-    font-size: 0.6rem;
-    font-weight: 600;
-    margin-top: 0.25rem;
-    margin-left: 0.4rem;
-    animation: slide-in 0.3s ease;
-}
-
-.helper-text {
-    display: block;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    margin-top: 0.4rem;
-    margin-left: 0.4rem;
-    line-height: 1.4;
-}
-
-@keyframes slide-in {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Button Styles port from auth-web */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.4rem;
-  border-radius: 12px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  font-size: 0.95rem;
-  text-decoration: none;
-  outline: none;
-}
-
-.btn-primary {
-  background: var(--gradient-main);
-  color: white;
-  box-shadow: 0 10px 20px -5px rgba(14, 33, 160, 0.4);
-}
-
-.btn-primary:hover {
-  background: var(--gradient-hover);
-  box-shadow: 0 15px 30px -5px rgba(177, 83, 215, 0.5);
-  transform: scale(1.02);
-  color: white;
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-primary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-.btn-block {
-  width: 100%;
-}
-
-.btn-lg {
-  padding: 0.85rem 1.8rem;
-  font-size: 1.05rem;
-}
-
-#kc-info {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    text-align: center;
-}
-
-#kc-info-wrapper {
-    color: var(--text-muted);
-    background-color: transparent;
-    font-size: 0.9rem;
-}
-
-#kc-info-wrapper a {
-    color: var(--color-secondary-amethyst);
-    text-decoration: none;
-    font-weight: 700;
-    margin-left: 0.2rem;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-#kc-info-wrapper a:hover {
-    color: var(--color-secondary-pink);
-}
-
-#kc-form-options {
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-}
-
-#kc-form-options a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-weight: 500;
-}
-
-#kc-form-options a:hover {
-    color: var(--color-secondary-amethyst);
-    text-shadow: 0 0 10px rgba(177, 83, 215, 0.3);
-}
-
-/* Custom Checkbox Styling */
+/* Checkbox Styles */
 .checkbox label {
     display: flex;
     align-items: center;
@@ -418,22 +295,133 @@ body.kcBodyClass {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .split-layout { flex-direction: column; }
-  .brand-section { 
-    min-height: 25vh; 
-    padding: 3rem 1.5rem 1.5rem; 
-  }
-  .brand-logo-large {
-    height: 50px;
-    margin-bottom: 1.5rem;
-  }
-  .brand-tagline { font-size: 1.1rem; }
-  .form-section { flex: 1; padding: 3rem 1.5rem; }
+/* Error & Helper Text */
+.error-message {
+    display: block;
+    color: var(--color-danger);
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    margin-left: 0.4rem;
+    animation: slide-in 0.3s ease;
 }
 
-/* Language Dropdown */
+.helper-text {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    margin-left: 0.4rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   6. Action Components (Buttons)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 0.95rem;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(14, 33, 160, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--gradient-hover);
+  box-shadow: 0 15px 30px -5px rgba(177, 83, 215, 0.5);
+  transform: scale(1.02);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-lg {
+  padding: 0.85rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   7. Information & Options
+   ========================================================================== */
+
+#kc-info {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+#kc-info-wrapper {
+    color: var(--text-muted);
+    background-color: transparent;
+    font-size: 0.9rem;
+}
+
+#kc-info-wrapper a {
+    color: var(--color-secondary-amethyst);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 0.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#kc-info-wrapper a:hover {
+    color: var(--color-secondary-pink);
+}
+
+#kc-form-options {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+#kc-form-options a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+#kc-form-options a:hover {
+    color: var(--color-secondary-amethyst);
+    text-shadow: 0 0 10px rgba(177, 83, 215, 0.3);
+}
+
+/* ==========================================================================
+   8. Locale & Language Selection
+   ========================================================================== */
+
 #kc-locale {
     position: absolute;
     top: 2rem;
@@ -486,15 +474,14 @@ body.kcBodyClass {
     transform: rotate(-135deg);
     margin-top: 3px;
     border-color: var(--text-main);
-  }
+}
   
-  #kc-current-locale-link:hover {
+#kc-current-locale-link:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--color-secondary-amethyst);
-    padding: 0rem 0.5rem;
 }
 
-/* Locale List */
+/* Locale List Dropdown */
 .kcLocaleListClass {
     position: absolute;
     top: calc(100% + 0.75rem);
@@ -508,32 +495,21 @@ body.kcBodyClass {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(30px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     max-height: 250px;
     overflow-y: auto;
     z-index: 1001;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-}
-
-.kcLocaleListClass::-webkit-scrollbar {
-    width: 4px;
-}
-
-.kcLocaleListClass::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
 }
 
 #kc-locale-dropdown:hover .kcLocaleListClass {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(1rem); /* Standardized spacing */
+    transform: translateY(1rem);
 }
 
-/* Add a bridge on the parent to prevent hover loss in the gap */
+/* Gap bridge for hover stability */
 #kc-locale-dropdown::after {
     content: '';
     position: absolute;
@@ -559,16 +535,11 @@ body.kcBodyClass {
     font-size: 0.8rem;
     font-weight: 500;
     border-radius: 10px;
-    transition: all 3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#kc-locale ul {
-    background-color: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .kcLocaleItemClass:hover,
-.kcLocaleItemClass:focus,
-.kcLocaleItemClass:focus-visible {
+.kcLocaleItemClass:focus {
     background: linear-gradient(90deg, rgba(177, 83, 215, 0.15) 0%, transparent 100%);
     color: var(--color-secondary-pink);
     outline: none;
@@ -576,7 +547,10 @@ body.kcBodyClass {
     padding-inline-start: 1rem;
 }
 
-/* Social Login Providers */
+/* ==========================================================================
+   9. Social Login Providers
+   ========================================================================== */
+
 #kc-social-providers {
     margin-top: 2.5rem;
     position: relative;
@@ -620,36 +594,25 @@ body.kcBodyClass {
 }
 
 .kcFormSocialAccountListButtonClass {
-    /* Hard-reset default styles */
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: none !important;
     outline: none !important;
-    min-width: 0 !important;
-    width: 15rem !important; /* Standardized comfortable width */
-    max-width: 100% !important; /* Adaptive on small screens */
-    height: auto !important;
-    margin: 0 !important;
-    text-transform: none !important;
-    line-height: normal !important;
-    
-    /* New Styling */
+    width: 15rem !important;
+    max-width: 100% !important;
     border-radius: 100px !important;
     padding: 0.6rem 1.4rem !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 0.6rem;
-    
     color: var(--text-muted) !important;
     text-decoration: none !important;
     font-weight: 500 !important;
     font-size: 0.85rem !important;
     font-family: var(--font-body) !important;
-    
     transition: all 0.2s ease !important;
     cursor: pointer !important;
-    white-space: nowrap !important;
 }
 
 .kcFormSocialAccountListButtonClass:hover {
@@ -660,13 +623,8 @@ body.kcBodyClass {
 
 .kcFormSocialAccountListButtonClass i {
     font-size: 1rem !important;
-    margin: 0 !important;
-    padding: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    height: 1rem !important;
-    line-height: 0 !important;
     opacity: 0.7;
     transition: opacity 0.2s ease;
 }
@@ -675,19 +633,13 @@ body.kcBodyClass {
     opacity: 1;
 }
 
-/* Minimal Specific Brand Hover States */
 #social-google.kcFormSocialAccountListButtonClass:hover { border-color: rgba(66, 133, 244, 0.4) !important; }
 #social-github.kcFormSocialAccountListButtonClass:hover { border-color: rgba(255, 255, 255, 0.4) !important; }
 
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-    .kcFormSocialAccountListClass {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
+/* ==========================================================================
+   10. Alert Messages (Feedback)
+   ========================================================================== */
 
-/* Alert Styles */
 .kcAlertClass {
     display: flex;
     align-items: flex-start;
@@ -708,25 +660,14 @@ body.kcBodyClass {
 .kcAlertClass::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 4px;
     height: 100%;
     background: currentColor;
     opacity: 0.8;
 }
 
-@keyframes alert-slide-in {
-    from { 
-        opacity: 0; 
-        transform: translateY(-15px) scale(0.98); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
-    }
-}
-
+/* Alert States */
 .alert-error, .pf-m-danger {
     background: rgba(255, 75, 75, 0.08);
     border-color: rgba(255, 75, 75, 0.2);
@@ -770,18 +711,61 @@ body.kcBodyClass {
     flex: 1;
 }
 
-.kc-feedback-text {
-    display: inline-block;
-}
-
 .kcAlertTitleClass br {
     display: block;
     margin-bottom: 0.5rem;
     content: "";
 }
 
-/* Responsive */
+/* ==========================================================================
+   11. Animations
+   ========================================================================== */
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 100px) scale(1.1); }
+  100% { transform: translate(-50px, -50px) scale(0.9); }
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes alert-slide-in {
+    from { opacity: 0; transform: translateY(-15px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   12. Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .split-layout { flex-direction: column; }
+  .brand-section { 
+    min-height: 25vh; 
+    padding: 3rem 1.5rem 1.5rem; 
+  }
+  .brand-logo-large {
+    height: 50px;
+    margin-bottom: 1.5rem;
+  }
+  .brand-tagline { font-size: 1.1rem; }
+  .form-section { flex: 1; padding: 3rem 1.5rem; }
+}
+
 @media (max-width: 480px) {
+    /* Form specifics */
+    .form-section { padding: 2rem 1rem; }
+    
+    /* Social buttons */
+    .kcFormSocialAccountListClass {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Alerts */
     .kcAlertClass {
         padding: 1rem;
         font-size: 0.85rem;
