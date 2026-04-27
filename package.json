@@ -1,5 +1,5 @@
 {
-    "name": "halooid-auth-theme",
+    "name": "keycloak-theme",
     "version": "0.0.0",
     "description": "Custom Keycloak theme for halooid",
     "repository": {

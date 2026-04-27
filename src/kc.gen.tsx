@@ -9,9 +9,9 @@
 
 import { lazy, Suspense, type ReactNode } from "react";
 
-export type ThemeName = "halooid-auth-theme";
+export type ThemeName = "halooid-theme";
 
-export const themeNames: ThemeName[] = ["halooid-auth-theme"];
+export const themeNames: ThemeName[] = ["halooid-theme"];
 
 export type KcEnvName = never;
 
