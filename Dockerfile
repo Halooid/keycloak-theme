@@ -30,9 +30,7 @@ ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
 # Automatically run the build command if necessary (for optimized production setup)
-USER root
-RUN microdnf install -y curl && microdnf clean all
-USER 1000
+# (Skipping curl installation as Keycloak 26+ uses ubi9-micro base image which lacks a package manager)
 RUN /opt/keycloak/bin/kc.sh build
 
 # Standard entrypoint for dev mode
