@@ -22,13 +22,6 @@ FROM quay.io/keycloak/keycloak:26.6.1
 # For Keycloak 26+, we use the "all-other-versions" jar.
 COPY --from=builder /app/dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar /opt/keycloak/providers/
 
-# Optional: Add environment variables for easier local development
-ENV KC_HOSTNAME=localhost
-ENV KC_HOSTNAME_STRICT=false
-ENV KC_HTTP_ENABLED=true
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=admin
-
 # Automatically run the build command if necessary (for optimized production setup)
 # (Skipping curl installation as Keycloak 26+ uses ubi9-micro base image which lacks a package manager)
 RUN /opt/keycloak/bin/kc.sh build
