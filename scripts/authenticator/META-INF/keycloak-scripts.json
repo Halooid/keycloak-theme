@@ -1,0 +1,16 @@
+{
+    "authenticators": [
+        {
+            "id": "mark-email-verified-script",
+            "name": "Mark Email Verified Script",
+            "fileName": "mark-email-verified.js",
+            "description": "Marks the user email as verified"
+        },
+        {
+            "id": "check-email-verified-condition",
+            "name": "Condition - Email Not Verified",
+            "fileName": "check-email-verified.js",
+            "description": "True if user email is not verified"
+        }
+    ]
+}

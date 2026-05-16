@@ -21,10 +21,11 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "email-otp.ftl":
                     default:
                         return (
                             <DefaultPage
-                                kcContext={kcContext}
+                                kcContext={kcContext as any}
                                 i18n={i18n}
                                 classes={classes}
                                 Template={Template}
