@@ -8,6 +8,7 @@ import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import BrandSection from "./BrandSection";
+import Loading from "./Loading";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -49,7 +50,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const { isReadyToRender } = useInitialize({ kcContext, doUseDefaultCss });
 
     if (!isReadyToRender) {
-        return null;
+        return <Loading />;
     }
 
     return (

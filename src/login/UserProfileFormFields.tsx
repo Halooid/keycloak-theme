@@ -61,8 +61,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                     className={kcClsx("kcFormGroupClass")}
                     style={{
                         display:
-                            attribute.annotations.inputType === "hidden" ||
-                            (attribute.name === "password-confirm" && !doMakeUserConfirmPassword)
+                            attribute.annotations.inputType === "hidden" || (attribute.name === "password-confirm" && !doMakeUserConfirmPassword)
                                 ? "none"
                                 : undefined
                     }}
@@ -79,11 +78,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                     </div>
                     <div className={kcClsx("kcInputWrapperClass")}>
                         {attribute.annotations.inputHelperTextBefore !== undefined && (
-                            <div
-                                className={kcClsx("kcInputHelperTextBeforeClass")}
-                                id={`form-help-text-before-${attribute.name}`}
-                                aria-live="polite"
-                            >
+                            <div className={kcClsx("kcInputHelperTextBeforeClass")} id={`form-help-text-before-${attribute.name}`} aria-live="polite">
                                 {advancedMsg(attribute.annotations.inputHelperTextBefore)}
                             </div>
                         )}
@@ -97,11 +92,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                         />
                         <FieldErrors attribute={attribute} displayableErrors={displayableErrors} kcClsx={kcClsx} fieldIndex={undefined} />
                         {attribute.annotations.inputHelperTextAfter !== undefined && (
-                            <div
-                                className={kcClsx("kcInputHelperTextAfterClass")}
-                                id={`form-help-text-after-${attribute.name}`}
-                                aria-live="polite"
-                            >
+                            <div className={kcClsx("kcInputHelperTextAfterClass")} id={`form-help-text-after-${attribute.name}`} aria-live="polite">
                                 {advancedMsg(attribute.annotations.inputHelperTextAfter)}
                             </div>
                         )}
@@ -131,9 +122,7 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
             {renderField("email")}
             {renderField("password")}
             {renderField("password-confirm")}
-            {formFieldStates
-                .filter(f => !renderedNames.has(f.attribute.name))
-                .map(f => renderField(f.attribute.name))}
+            {formFieldStates.filter(f => !renderedNames.has(f.attribute.name)).map(f => renderField(f.attribute.name))}
         </>
     );
 }

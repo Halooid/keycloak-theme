@@ -1,27 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap");
 
 /* ==========================================================================
    1. Variables & Root
    ========================================================================== */
 
 :root {
-  --color-primary-deep: #0E21A0;
-  --color-primary-royal: #4D2FB2;
-  --color-secondary-amethyst: #B153D7;
-  --color-secondary-pink: #F375C2;
-  
-  --bg-dark: #05060f;
-  --text-main: #ffffff;
-  --text-muted: #b0b0cc;
-  
-  --gradient-main: linear-gradient(135deg, var(--color-primary-deep) 0%, var(--color-primary-royal) 50%, var(--color-secondary-amethyst) 100%);
-  --gradient-hover: linear-gradient(135deg, var(--color-primary-royal) 0%, var(--color-secondary-amethyst) 50%, var(--color-secondary-pink) 100%);
-  
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
+    --color-primary-deep: #0e21a0;
+    --color-primary-royal: #4d2fb2;
+    --color-secondary-amethyst: #b153d7;
+    --color-secondary-pink: #f375c2;
 
-  --color-danger: #ff4b4b;
-  --gradient-danger: linear-gradient(135deg, #ff4b4b 0%, #ff8080 100%);
+    --bg-dark: #05060f;
+    --text-main: #ffffff;
+    --text-muted: #b0b0cc;
+
+    --gradient-main: linear-gradient(135deg,
+            var(--color-primary-deep) 0%,
+            var(--color-primary-royal) 50%,
+            var(--color-secondary-amethyst) 100%);
+    --gradient-hover: linear-gradient(135deg,
+            var(--color-primary-royal) 0%,
+            var(--color-secondary-amethyst) 50%,
+            var(--color-secondary-pink) 100%);
+
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Montserrat", sans-serif;
+
+    --color-danger: #ff4b4b;
+    --gradient-danger: linear-gradient(135deg, #ff4b4b 0%, #ff8080 100%);
 }
 
 /* ==========================================================================
@@ -41,10 +47,10 @@ body.kcBodyClass {
 }
 
 .text-gradient {
-  background: var(--gradient-hover);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: var(--gradient-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* ==========================================================================
@@ -52,67 +58,92 @@ body.kcBodyClass {
    ========================================================================== */
 
 .split-layout {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
 
 /* Brand Section (Left) */
 .brand-section {
-  flex: 50;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg-dark);
+    flex: 50;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-dark);
 }
 
 .bg-blobs {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  filter: blur(100px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    filter: blur(100px);
 }
 
 .blob {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.4;
-  animation: blob-float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: blob-float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.blob-1 { width: 500px; height: 500px; background: var(--color-primary-deep); top: -100px; left: -100px; }
-.blob-2 { width: 600px; height: 600px; background: var(--color-secondary-amethyst); bottom: -150px; right: -100px; animation-duration: 25s; }
-.blob-3 { width: 400px; height: 400px; background: var(--color-primary-royal); top: 20%; left: 30%; animation-duration: 30s; }
+.blob-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-primary-deep);
+    top: -100px;
+    left: -100px;
+}
+
+.blob-2 {
+    width: 600px;
+    height: 600px;
+    background: var(--color-secondary-amethyst);
+    bottom: -150px;
+    right: -100px;
+    animation-duration: 25s;
+}
+
+.blob-3 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-primary-royal);
+    top: 20%;
+    left: 30%;
+    animation-duration: 30s;
+}
 
 .brand-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
+    position: relative;
+    z-index: 10;
+    text-align: center;
 }
 
 .brand-logo-large {
-  height: 80px;
-  margin-bottom: 2.5rem;
+    height: 80px;
+    margin-bottom: 2.5rem;
 }
 
 .brand-tagline {
-  font-size: 1.25rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: white;
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: white;
 }
 
 /* Form Section (Right) */
 .form-section {
-  flex: 50;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: var(--bg-dark);
+    flex: 50;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-dark);
 }
 
 /* ==========================================================================
@@ -154,7 +185,8 @@ body.kcBodyClass {
     flex: 1;
 }
 
-.input-label, .kcLabelClass {
+.input-label,
+.kcLabelClass {
     display: block;
     font-size: 0.9rem;
     font-weight: 600;
@@ -205,8 +237,8 @@ body.kcBodyClass {
 
 /* Autofill override fix */
 .input-field:-webkit-autofill,
-.input-field:-webkit-autofill:hover, 
-.input-field:-webkit-autofill:focus, 
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus,
 .input-field:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px #0b0c14 inset !important;
     -webkit-text-fill-color: var(--text-main) !important;
@@ -285,7 +317,7 @@ body.kcBodyClass {
 }
 
 .checkbox input[type="checkbox"]::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 5px;
     height: 10px;
@@ -330,52 +362,52 @@ body.kcBodyClass {
    ========================================================================== */
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.4rem;
-  border-radius: 12px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  font-size: 0.95rem;
-  text-decoration: none;
-  outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    font-size: 0.95rem;
+    text-decoration: none;
+    outline: none;
 }
 
 .btn-primary {
-  background: var(--gradient-main);
-  color: white;
-  box-shadow: 0 10px 20px -5px rgba(14, 33, 160, 0.4);
+    background: var(--gradient-main);
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(14, 33, 160, 0.4);
 }
 
 .btn-primary:hover {
-  background: var(--gradient-hover);
-  box-shadow: 0 15px 30px -5px rgba(177, 83, 215, 0.5);
-  transform: scale(1.02);
-  color: white;
+    background: var(--gradient-hover);
+    box-shadow: 0 15px 30px -5px rgba(177, 83, 215, 0.5);
+    transform: scale(1.02);
+    color: white;
 }
 
 .btn-primary:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 .btn-primary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .btn-block {
-  width: 100%;
+    width: 100%;
 }
 
 .btn-lg {
-  padding: 0.85rem 1.8rem;
-  font-size: 1.05rem;
+    padding: 0.85rem 1.8rem;
+    font-size: 1.05rem;
 }
 
 /* ==========================================================================
@@ -470,13 +502,15 @@ body.kcBodyClass {
 }
 
 #kc-current-locale-link::after {
-    content: '' !important;
+    content: "" !important;
     width: 6px;
     height: 6px;
     border-right: 2px solid var(--text-muted);
     border-bottom: 2px solid var(--text-muted);
     transform: rotate(45deg);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
     margin-top: -3px;
 }
 
@@ -485,7 +519,7 @@ body.kcBodyClass {
     margin-top: 3px;
     border-color: var(--text-main);
 }
-  
+
 #kc-current-locale-link:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--color-secondary-amethyst);
@@ -507,7 +541,9 @@ body.kcBodyClass {
     transform: translateY(-10px);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(30px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     max-height: 250px;
     overflow-y: auto;
     z-index: 1001;
@@ -521,7 +557,7 @@ body.kcBodyClass {
 
 /* Gap bridge for hover stability */
 #kc-locale-dropdown::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 100%;
     left: 0;
@@ -582,10 +618,13 @@ body.kcBodyClass {
 
 #kc-social-providers h4::before,
 #kc-social-providers h4::after {
-    content: '';
+    content: "";
     height: 1px;
     flex: 1;
-    background: linear-gradient(to var(--direction, right), transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(to var(--direction, right),
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
 }
 
 #kc-social-providers h4::after {
@@ -643,8 +682,13 @@ body.kcBodyClass {
     opacity: 1;
 }
 
-#social-google.kcFormSocialAccountListButtonClass:hover { border-color: rgba(66, 133, 244, 0.4) !important; }
-#social-github.kcFormSocialAccountListButtonClass:hover { border-color: rgba(255, 255, 255, 0.4) !important; }
+#social-google.kcFormSocialAccountListButtonClass:hover {
+    border-color: rgba(66, 133, 244, 0.4) !important;
+}
+
+#social-github.kcFormSocialAccountListButtonClass:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
 
 /* ==========================================================================
    10. Alert Messages (Feedback)
@@ -668,9 +712,10 @@ body.kcBodyClass {
 }
 
 .kcAlertClass::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 4px;
     height: 100%;
     background: currentColor;
@@ -678,28 +723,32 @@ body.kcBodyClass {
 }
 
 /* Alert States */
-.alert-error, .pf-m-danger {
+.alert-error,
+.pf-m-danger {
     background: rgba(255, 75, 75, 0.08);
     border-color: rgba(255, 75, 75, 0.2);
     color: #ff8080;
     box-shadow: 0 8px 32px -8px rgba(255, 75, 75, 0.2);
 }
 
-.alert-success, .pf-m-success {
+.alert-success,
+.pf-m-success {
     background: rgba(0, 200, 83, 0.08);
     border-color: rgba(0, 200, 83, 0.2);
     color: #00e676;
     box-shadow: 0 8px 32px -8px rgba(0, 200, 83, 0.2);
 }
 
-.alert-warning, .pf-m-warning {
+.alert-warning,
+.pf-m-warning {
     background: rgba(255, 160, 0, 0.08);
     border-color: rgba(255, 160, 0, 0.2);
     color: #ffb300;
     box-shadow: 0 8px 32px -8px rgba(255, 160, 0, 0.2);
 }
 
-.alert-info, .pf-m-info {
+.alert-info,
+.pf-m-info {
     background: rgba(177, 83, 215, 0.08);
     border-color: rgba(177, 83, 215, 0.2);
     color: var(--color-secondary-amethyst);
@@ -732,19 +781,41 @@ body.kcBodyClass {
    ========================================================================== */
 
 @keyframes blob-float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(50px, 100px) scale(1.1); }
-  100% { transform: translate(-50px, -50px) scale(0.9); }
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(50px, 100px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-50px, -50px) scale(0.9);
+    }
 }
 
 @keyframes slide-in {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes alert-slide-in {
-    from { opacity: 0; transform: translateY(-15px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* ==========================================================================
@@ -752,37 +823,190 @@ body.kcBodyClass {
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  .split-layout { flex-direction: column; }
-  .brand-section { 
-    min-height: 25vh; 
-    padding: 3rem 1.5rem 1.5rem; 
-  }
-  .brand-logo-large {
-    height: 50px;
-    margin-bottom: 1.5rem;
-  }
-  .brand-tagline { font-size: 1.1rem; }
-  .form-section { flex: 1; padding: 3rem 1.5rem; }
+    .split-layout {
+        flex-direction: column;
+    }
+
+    .brand-section {
+        min-height: 25vh;
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .brand-logo-large {
+        height: 50px;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-tagline {
+        font-size: 1.1rem;
+    }
+
+    .form-section {
+        flex: 1;
+        padding: 3rem 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
+
     /* Form specifics */
-    .form-section { padding: 2rem 1rem; }
-    
+    .form-section {
+        padding: 2rem 1rem;
+    }
+
     /* Social buttons */
     .kcFormSocialAccountListClass {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     /* Alerts */
     .kcAlertClass {
         padding: 1rem;
         font-size: 0.85rem;
     }
-    
+
     .pf-c-alert__icon {
         font-size: 1.2rem;
         margin-right: 0.75rem;
     }
+}
+
+/* OTP Page Styles */
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.otp-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.otp-input {
+    font-size: 2.5rem !important;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    width: 100%;
+    max-width: 300px;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+    outline: none;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.submit-btn {
+    margin-top: 2rem;
+    height: 56px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #ef4444 !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.resend-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.resend-btn {
+    background: transparent !important;
+    border: none !important;
+    color: var(--color-secondary-amethyst) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease !important;
+    font-family: var(--font-heading);
+}
+
+.resend-btn:hover:not(:disabled) {
+    color: var(--color-secondary-pink) !important;
+}
+
+.resend-btn:disabled {
+    color: var(--text-muted) !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.resend-timer {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Loading Screen Styles */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    z-index: 10;
+}
+
+.loading-logo {
+    height: 60px;
+    width: auto;
+}
+
+.loading-bar-container {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loading-bar-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.loading-centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
 }

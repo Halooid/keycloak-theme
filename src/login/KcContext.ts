@@ -10,7 +10,7 @@ export type KcContextExtension = {
 };
 
 export type KcContextExtensionPerPage = {
-    "email-otp.ftl"?: {};
+    "email-code-form.ftl": {};
 };
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
